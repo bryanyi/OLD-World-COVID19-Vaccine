@@ -21,9 +21,9 @@ with open("vaccinations_data.csv") as csvfile:
             total_vaccinations_per_hundred=row['total_vaccinations_per_hundred'],
             people_vaccinated_per_hundred=row['people_vaccinated_per_hundred'],
             people_fully_vaccinated_per_hundred=row['people_fully_vaccinated_per_hundred'],
-            daily_vaccinations_per_million=['daily_vaccinations_per_million'],
+            daily_vaccinations_per_million=row['daily_vaccinations_per_million'],
             vaccines=row['vaccines'],
             source_name=row['source_name'],
-            source_website=['source_website']
+            source_website=row['source_website']
         )
         mydata.save()
