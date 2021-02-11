@@ -1,11 +1,11 @@
 from django.shortcuts import render
 from django.http import JsonResponse
+from .models import covidVaccinationData
 
 # third party imports
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .serializers import covidVaccinationDataSerializer
-from .models import covidVaccinationData
 
 class api_one(APIView):
     def get(self, request, *args, **kwargs):

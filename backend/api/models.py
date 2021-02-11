@@ -1,3 +1,4 @@
+from django.forms import ModelForm, Textarea
 from django.db import models
 
 class covidVaccinationData(models.Model):
@@ -19,4 +20,5 @@ class covidVaccinationData(models.Model):
     
     def __str__(self):
         return self.country
-     
+class Meta:
+    db_table = 'VaccinationData'
