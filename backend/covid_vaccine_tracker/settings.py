@@ -70,14 +70,11 @@ WSGI_APPLICATION = 'covid_vaccine_tracker.wsgi.application'
 DATABASES = {
     'default': {
         "ENGINE": 'django.db.backends.mysql',
-        "NAME":'CovidVaccinationData',
+        "NAME":'VaccinationData',
         'USER': 'root',
-        'PASSWORD':'',
-        'HOST':'localhost',
+        'PASSWORD':'bryancodes',
+        'HOST':'127.0.0.1',
         'PORT': '3306',
-        'OPTIONS': {
-            'sql_mode': 'traditional',
-        }
     }
 }
 
