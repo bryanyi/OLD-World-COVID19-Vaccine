@@ -9,14 +9,10 @@ from .serializers import covidVaccinationDataSerializer
 
 class api_one(APIView):
     def get(self, request, *args, **kwargs):
-        querySet = covidVaccinationData.objects.all()
+        # querySet = covidVaccinationData.objects.all()
+        
+        querySet = covidVaccinationData.objects.raw("SELECT * FROM VaccinationData.WD_covid_vaccination_project_data_1 WHERE country='Andorra'")
+    
         serializer = covidVaccinationDataSerializer(querySet, many=True)
         return Response(serializer.data)
         
-
-    def post(self, request, *args, **kwargs):
-        serializer = covidVaccinationDataSerializer(data = request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors)
