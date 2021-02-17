@@ -1,0 +1,25 @@
+.Details {
+  display: flex;
+  flex-direction: column;
+}
+
+.Details .sources_block {
+  text-align: center;
+  padding: 0.5rem;
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.2);
+  height: 400px;
+  width: 250px;
+}
+
+.Details .most_vaccinated {
+  text-align: center;
+  padding: 0.5rem;
+  margin-top: 1.5rem;
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.2);
+  height: 400px;
+  width: 250px;
+}
