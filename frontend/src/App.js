@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import "./css/App.css";
 
 // COMPONENTS
 import Navigation from "./components/Navigation";
@@ -17,11 +18,15 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1>This is the covid vaccine app!</h1>
-      <Navigation />
-      <CountryStats />
-      <InfoDetails />
-      <Chart />
+      <div className="left__screen">
+        <Navigation />
+        <CountryStats />
+        <Chart />
+      </div>
+
+      <div className="right__screen">
+        <InfoDetails />
+      </div>
     </div>
   );
 };

@@ -1,0 +1,31 @@
+.NavigationComponent {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem;
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.2);
+}
+.NavigationComponent .main__title {
+  flex: 0.4;
+}
+
+.NavigationComponent .navbar__search {
+  flex: 0.6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.NavigationComponent .navbar__search form {
+  width: 100%;
+}
+
+.NavigationComponent .navbar__search form input {
+  outline: none;
+  border: none;
+  width: 95%;
+  padding: 0.8rem 0.7rem 0.8rem 0.7rem;
+  background-color: #f4f4f4;
+  border-radius: 0.4rem;
+}
