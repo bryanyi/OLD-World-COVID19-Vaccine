@@ -10,6 +10,7 @@ import Chart from "./components/Chart";
 
 const App = () => {
   const [countries, setCountries] = useState([]);
+  const [searchBar, setSearchBar] = useState([]);
 
   useEffect(async () => {
     const { data } = await axios.get("http://127.0.0.1:8000");
@@ -19,13 +20,13 @@ const App = () => {
   return (
     <div className="App">
       <div className="left__screen">
-        <Navigation />
-        <CountryStats />
-        <Chart />
+        <Navigation setSearchBar={setSearchBar} />
+        <CountryStats countries={countries} searchedCountry={searchBar} />
+        <Chart countries={countries} searchedCountry={searchBar} />
       </div>
 
       <div className="right__screen">
-        <InfoDetails />
+        <InfoDetails countries={countries} searchedCountry={searchBar} />
       </div>
     </div>
   );
