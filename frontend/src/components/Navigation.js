@@ -14,6 +14,7 @@ const Navigation = ({ handleSearch, searchBar }) => {
       </div>
       <div className="navbar__search">
         <form>
+          <h2>Search Country</h2>
           <input
             type="text"
             placeholder="Search Country"

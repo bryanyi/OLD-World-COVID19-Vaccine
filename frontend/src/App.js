@@ -18,13 +18,16 @@ const App = () => {
   const [countries, setCountries] = useState([]); // Array of objects
   const [searchBar, setSearchBar] = useState("");
 
+  // Filter the searched country from Navigation.js component
   const filteredCountry = countries.filter((country) => {
     if (country.country.toLowerCase() === searchBar.toLowerCase()) {
       return country;
     }
-  });
 
-  console.log(filteredCountry);
+    if (searchBar == "") {
+      setSearchBar("United States");
+    }
+  });
 
   const handleSearch = (val) => {
     setSearchBar(val);
@@ -34,7 +37,7 @@ const App = () => {
     <div className="App">
       <div className="left__screen">
         <Navigation handleSearch={handleSearch} searchBar={searchBar} />
-        <CountryStats />
+        <CountryStats filteredCountry={filteredCountry} />
         <Chart />
       </div>
 
