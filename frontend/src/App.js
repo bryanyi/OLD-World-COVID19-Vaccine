@@ -9,20 +9,26 @@ import InfoDetails from "./components/InfoDetails";
 import Chart from "./components/Chart";
 
 const App = () => {
-  const [countries, setCountries] = useState([]);
-  const [searchBar, setSearchBar] = useState("");
-
-  const handleSearch = (val) => {
-    setSearchBar(val);
-  };
-
-  console.log("App.js: " + searchBar);
-
   // FETCH COUNTRIES FROM DJANGO API
   useEffect(async () => {
     const { data } = await axios.get("http://127.0.0.1:8000");
     setCountries(data);
   }, []);
+
+  const [countries, setCountries] = useState([]); // Array of objects
+  const [searchBar, setSearchBar] = useState("");
+
+  const filteredCountry = countries.filter((country) => {
+    if (country.country.toLowerCase() === searchBar.toLowerCase()) {
+      return country;
+    }
+  });
+
+  console.log(filteredCountry);
+
+  const handleSearch = (val) => {
+    setSearchBar(val);
+  };
 
   return (
     <div className="App">
