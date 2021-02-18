@@ -12,21 +12,23 @@ const App = () => {
   const [countries, setCountries] = useState([]);
   const [searchBar, setSearchBar] = useState([]);
 
+  // FETCH COUNTRIES FROM DJANGO API
   useEffect(async () => {
     const { data } = await axios.get("http://127.0.0.1:8000");
     setCountries(data);
-  }, [setCountries]);
+  }, []);
+  console.log(searchBar);
 
   return (
     <div className="App">
       <div className="left__screen">
         <Navigation setSearchBar={setSearchBar} />
-        <CountryStats countries={countries} searchedCountry={searchBar} />
-        <Chart countries={countries} searchedCountry={searchBar} />
+        <CountryStats />
+        <Chart />
       </div>
 
       <div className="right__screen">
-        <InfoDetails countries={countries} searchedCountry={searchBar} />
+        <InfoDetails />
       </div>
     </div>
   );

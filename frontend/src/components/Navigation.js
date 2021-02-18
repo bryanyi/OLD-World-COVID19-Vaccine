@@ -5,9 +5,7 @@ const Navigation = ({ setSearchBar }) => {
   const [searchValue, setSearchValue] = useState("");
 
   useEffect(() => {
-    searchValue.target == undefined
-      ? setSearchBar("United States")
-      : setSearchBar(searchValue.target.value);
+    setSearchBar(searchValue);
   }, [searchValue]);
 
   return (
