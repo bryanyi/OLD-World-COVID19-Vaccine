@@ -10,19 +10,24 @@ import Chart from "./components/Chart";
 
 const App = () => {
   const [countries, setCountries] = useState([]);
-  const [searchBar, setSearchBar] = useState([]);
+  const [searchBar, setSearchBar] = useState("");
+
+  const handleSearch = (val) => {
+    setSearchBar(val);
+  };
+
+  console.log("App.js: " + searchBar);
 
   // FETCH COUNTRIES FROM DJANGO API
   useEffect(async () => {
     const { data } = await axios.get("http://127.0.0.1:8000");
     setCountries(data);
   }, []);
-  console.log(searchBar);
 
   return (
     <div className="App">
       <div className="left__screen">
-        <Navigation setSearchBar={setSearchBar} />
+        <Navigation handleSearch={handleSearch} searchBar={searchBar} />
         <CountryStats />
         <Chart />
       </div>

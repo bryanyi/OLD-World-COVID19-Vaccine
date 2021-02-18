@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "../css/Navigation.css";
 
-const Navigation = ({ setSearchBar }) => {
-  const [searchValue, setSearchValue] = useState("");
-
-  useEffect(() => {
-    setSearchBar(searchValue);
-  }, [searchValue]);
+const Navigation = ({ handleSearch, searchBar }) => {
+  const handleSearchResult = (e) => {
+    handleSearch(e.target.value);
+  };
 
   return (
     <div className="NavigationComponent">
@@ -19,7 +17,8 @@ const Navigation = ({ setSearchBar }) => {
           <input
             type="text"
             placeholder="Search Country"
-            onChange={setSearchValue}
+            onChange={handleSearchResult}
+            value={searchBar}
           />
         </form>
       </div>
