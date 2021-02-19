@@ -1,11 +1,11 @@
 import React from "react";
-import { useLoading, Grid } from "@agney/react-loading";
+import { useLoading, Puff } from "@agney/react-loading";
 import "../css/LoadingComponent.css";
 
 const LoadingComponent = () => {
   const { containerProps, indicatorEl } = useLoading({
     loading: true,
-    indicator: <Grid width="80" />,
+    indicator: <Puff width="80" />,
   });
 
   return (

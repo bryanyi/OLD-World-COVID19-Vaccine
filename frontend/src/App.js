@@ -44,7 +44,7 @@ const App = () => {
       </div>
 
       <div className="right__screen">
-        <InfoDetails />
+        <InfoDetails filteredCountry={filteredCountry} />
       </div>
     </div>
   );

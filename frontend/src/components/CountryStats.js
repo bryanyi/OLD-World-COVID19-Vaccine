@@ -3,7 +3,6 @@ import LoadingComponent from "./LoadingComponent";
 import "../css/CountryStats.css";
 
 const CountryStats = ({ filteredCountry }) => {
-  console.log(filteredCountry);
   return (
     <>
       {filteredCountry.length == 0 ? (
