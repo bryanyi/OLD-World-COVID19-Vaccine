@@ -1,11 +1,15 @@
 import React from "react";
 import "../css/Navigation.css";
 
-const Navigation = ({ handleSearch, searchBar }) => {
+const Navigation = ({
+  handleSearch,
+  searchBar,
+  filteredCountry,
+  countries,
+}) => {
   const handleSearchResult = (e) => {
     handleSearch(e.target.value);
   };
-
   return (
     <div className="NavigationComponent">
       <div className="main__title">
@@ -15,12 +19,20 @@ const Navigation = ({ handleSearch, searchBar }) => {
       <div className="navbar__search">
         <form>
           <h2>Search Country</h2>
-          <input
-            type="text"
-            placeholder="Search Country"
+
+          <select
+            name="countries"
+            id="select-country"
             onChange={handleSearchResult}
             value={searchBar}
-          />
+          >
+            <option value="United States">United States</option>
+            {countries.map((country, i) => (
+              <option value={country.country} key={i}>
+                {country.country}
+              </option>
+            ))}
+          </select>
         </form>
       </div>
     </div>

@@ -21,7 +21,7 @@
   width: 100%;
 }
 
-.NavigationComponent .navbar__search form input {
+.NavigationComponent .navbar__search form select {
   outline: none;
   border: none;
   width: 95%;

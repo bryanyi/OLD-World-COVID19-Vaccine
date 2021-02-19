@@ -13,6 +13,7 @@ const App = () => {
   useEffect(async () => {
     const { data } = await axios.get("http://127.0.0.1:8000");
     setCountries(data);
+    setSearchBar("United States");
   }, []);
 
   const [countries, setCountries] = useState([]); // Array of objects
@@ -23,10 +24,6 @@ const App = () => {
     if (country.country.toLowerCase() === searchBar.toLowerCase()) {
       return country;
     }
-
-    if (searchBar == "") {
-      setSearchBar("United States");
-    }
   });
 
   const handleSearch = (val) => {
@@ -36,7 +33,12 @@ const App = () => {
   return (
     <div className="App">
       <div className="left__screen">
-        <Navigation handleSearch={handleSearch} searchBar={searchBar} />
+        <Navigation
+          countries={countries}
+          handleSearch={handleSearch}
+          searchBar={searchBar}
+          filteredCountry={filteredCountry}
+        />
         <CountryStats filteredCountry={filteredCountry} />
         <Chart />
       </div>
