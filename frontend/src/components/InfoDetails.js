@@ -1,8 +1,8 @@
-import React from "react";
-import LoadingComponent from "./LoadingComponent";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import "../css/InfoDetails.css";
 
-const InfoDetails = ({ filteredCountry }) => {
+const InfoDetails = ({ filteredCountry, fetchMostVaccinated }) => {
   return (
     <>
       {filteredCountry.length == 0 ? (
@@ -21,11 +21,25 @@ const InfoDetails = ({ filteredCountry }) => {
               <div className="sources_block">
                 <h2>Sources</h2>
                 <h3>{country.country}</h3>
+                <div className="source_links">
+                  <p>{country.source_name}</p>
+                  <a href={country.source_website}>
+                    Source Website for {country.country}
+                  </a>
+                </div>
               </div>
               <div className="most_vaccinated">
                 <h2>Most Vaccinated</h2>
-                <h3>~Placeholder~</h3>
-                <p>~Total vaccinations: 1234~</p>
+                <h3>
+                  {fetchMostVaccinated.map((country, i) => {
+                    return (
+                      <div key={i}>
+                        <div>{country.country}</div>
+                        <div>{country.total_vaccinations}</div>
+                      </div>
+                    );
+                  })}
+                </h3>
               </div>
             </div>
           );

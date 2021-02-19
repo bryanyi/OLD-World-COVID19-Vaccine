@@ -1,12 +1,7 @@
 import React from "react";
 import "../css/Navigation.css";
 
-const Navigation = ({
-  handleSearch,
-  searchBar,
-  filteredCountry,
-  countries,
-}) => {
+const Navigation = ({ handleSearch, searchBar, countries }) => {
   const handleSearchResult = (e) => {
     handleSearch(e.target.value);
   };

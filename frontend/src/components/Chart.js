@@ -1,28 +1,45 @@
 import React from "react";
 import { Bar } from "react-chartjs-2";
 
-const Chart = () => {
+const Chart = ({ filteredCountry }) => {
   return (
     <div className="Chart">
       <div className="bar__graph">
-        <Bar
-          data={{
-            labels: ["Total Vaccinated", "Daily Vaccinations"],
-            options: {
-              scales: {
-                yAxes: [
+        {filteredCountry.map((country, i) => {
+          return (
+            <Bar
+              key={i}
+              data={{
+                labels: ["Total Vaccinated", "Daily Vaccinations"],
+                datasets: [
                   {
-                    ticks: {
-                      beginAtZero: true,
-                    },
+                    data: [
+                      country.total_vaccinations,
+                      country.daily_vaccinations,
+                    ],
+                    label: "Vaccinations",
+                    backgroundColor: ["#2a9d8f", "#f4a261"],
+                    borderColor: "#171717",
+                    fill: true,
                   },
                 ],
-              },
-            },
-          }}
-          height={105}
-          width={300}
-        />
+                options: {
+                  scales: {
+                    yAxes: [
+                      {
+                        ticks: {
+                          beginAtZero: true,
+                        },
+                      },
+                    ],
+                  },
+                },
+              }}
+              height={105}
+              width={300}
+            />
+          );
+        })}
       </div>
     </div>
   );

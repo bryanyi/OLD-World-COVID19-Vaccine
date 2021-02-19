@@ -7,7 +7,24 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from .serializers import covidVaccinationDataSerializer
 
+class most_vaccinated(APIView):
+    def get(self, request, *args, **kwargs):
+        mySQL="""
+            SELECT *
+            FROM api_covidvaccinationdata
+            WHERE total_vaccinations IN (
+	        SELECT MAX(total_vaccinations)
+            FROM api_covidvaccinationdata
+            )
+            """
+        
+        querySet = covidVaccinationData.objects.raw(mySQL)
+    
+        serializer = covidVaccinationDataSerializer(querySet, many=True)
+        return Response(serializer.data)
+
 class all_countries_vaccination_data(APIView):
+    
     def get(self, request, *args, **kwargs):
         
         mySQL = """

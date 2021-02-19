@@ -16,8 +16,15 @@ const App = () => {
     setSearchBar("United States");
   }, []);
 
+  useEffect(async () => {
+    const { data } = await axios.get("http://localhost:8000/most-vaccinated/");
+    setFetchMostVaccinated(data);
+  }, []);
+
+  // SET STATE
   const [countries, setCountries] = useState([]); // Array of objects
-  const [searchBar, setSearchBar] = useState("");
+  const [searchBar, setSearchBar] = useState(""); // String from Navigation.js Component's <select> value
+  const [fetchMostVaccinated, setFetchMostVaccinated] = useState([]); // Array of objects
 
   // Filter the searched country from Navigation.js component
   const filteredCountry = countries.filter((country) => {
@@ -40,11 +47,14 @@ const App = () => {
           filteredCountry={filteredCountry}
         />
         <CountryStats filteredCountry={filteredCountry} />
-        <Chart />
+        <Chart filteredCountry={filteredCountry} />
       </div>
 
       <div className="right__screen">
-        <InfoDetails filteredCountry={filteredCountry} />
+        <InfoDetails
+          filteredCountry={filteredCountry}
+          fetchMostVaccinated={fetchMostVaccinated}
+        />
       </div>
     </div>
   );
