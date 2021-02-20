@@ -5,17 +5,19 @@
   margin: 1.5rem;
 }
 
-.Stats .total_vaccinations {
-  text-align: center;
-  padding: 0.5rem;
-  background-color: white;
-  border-radius: 0.5rem;
-  box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.2);
-  height: 200px;
-  width: 350px;
+.Stats h3,
+p,
+h2 {
+  font-weight: 800;
+  opacity: 0.65;
 }
 
-.Stats .daily_vaccinations {
+.Stats .total_vaccinations,
+.daily_vaccinations,
+.vaccines {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
   padding: 0.5rem;
   background-color: white;
@@ -23,14 +25,33 @@
   box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.2);
   height: 200px;
   width: 350px;
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.3)
+  );
 }
 
-.Stats .vaccines {
-  text-align: center;
-  padding: 0.5rem;
-  background-color: white;
-  border-radius: 0.5rem;
-  box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.2);
-  height: 200px;
-  width: 350px;
+.Stats .divider__line {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  width: 80%;
+}
+
+.Stats h3 {
+  margin: 0.3rem 0;
+}
+
+.Stats #date {
+  margin: 1rem 0;
+}
+
+.Stats #main_result {
+  font-size: 3rem;
+  opacity: 1;
+  color: #2a9d8f;
+}
+
+.Stats #vaccine_main_result {
+  font-size: 1.5rem;
+  color: #2a9d8f;
 }
