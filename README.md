@@ -1,7 +1,7 @@
 # COVID-19 Vaccine Tracker
 
-![ COVID-19 Vaccine Tracker Demo](assets/World_COVID_Vaccination_Demo_gif.gif)
+![ COVID-19 Vaccine Tracker Demo](assets/gif1.gif)
 _COVID-19 Vaccine Tracker Demo_
 
-![ COVID-19 Vaccine Tracker Responsiveness Demo](assets/World_COVID_Vaccination_Responsive_gif.gif)
+![ COVID-19 Vaccine Tracker Responsiveness Demo](assets/gif2.gif)
 _Responsiveness Demo_
