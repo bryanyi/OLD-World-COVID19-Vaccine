@@ -13,3 +13,24 @@
   );
   z-index: 4;
 }
+
+.Chart .total_vaccinations_chart {
+  width: 100%;
+}
+
+.Chart .daily_vaccinations_chart {
+  width: 100%;
+}
+
+.Chart canvas {
+  max-width: 100%;
+}
+
+@media (max-width: 780px) {
+  .Chart {
+    flex-direction: column;
+  }
+  .Chart canvas {
+    max-width: 95%;
+  }
+}

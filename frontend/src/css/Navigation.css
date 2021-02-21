@@ -48,3 +48,15 @@
   );
   border-radius: 0.4rem;
 }
+
+@media (max-width: 690px) {
+  .NavigationComponent .main__title h1 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 580px) {
+  .NavigationComponent .main__title h1 {
+    font-size: 1rem;
+  }
+}

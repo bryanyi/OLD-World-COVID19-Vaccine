@@ -28,25 +28,23 @@ const Chart = ({ filteredCountry }) => {
               />
             </div>
             <div className="daily_vaccinations_chart">
-              <div className="daily_vaccinations_chart">
-                <Bar
-                  key={i}
-                  data={{
-                    labels: ["Daily Vaccinations"],
-                    datasets: [
-                      {
-                        data: [country.daily_vaccinations],
-                        label: `Daily Vaccinations in ${country.country}: ${country.daily_vaccinations}`,
-                        backgroundColor: "#f4a261",
-                        borderColor: "#171717",
-                        fill: true,
-                      },
-                    ],
-                  }}
-                  height={490}
-                  width={600}
-                />
-              </div>
+              <Bar
+                key={i}
+                data={{
+                  labels: ["Daily Vaccinations"],
+                  datasets: [
+                    {
+                      data: [country.daily_vaccinations],
+                      label: `Daily Vaccinations in ${country.country}: ${country.daily_vaccinations}`,
+                      backgroundColor: "#f4a261",
+                      borderColor: "#171717",
+                      fill: true,
+                    },
+                  ],
+                }}
+                height={490}
+                width={600}
+              />
             </div>
           </div>
         );

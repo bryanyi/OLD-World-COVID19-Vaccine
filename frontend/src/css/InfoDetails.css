@@ -73,6 +73,9 @@ p {
   );
   z-index: 4;
 }
+.Details .most_vaccinated canvas {
+  max-width: 100%;
+}
 
 .Details .most_vaccinated h3 {
   font-weight: 800;
@@ -88,4 +91,48 @@ p {
   font-size: 2rem;
   font-weight: 800;
   color: #2a9d8f;
+}
+
+@media (max-width: 1400px) {
+  .Details {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .Details .most_vaccinated {
+    margin: 0 0;
+  }
+
+  .Details .most_vaccinated {
+    width: 500px;
+  }
+}
+
+@media (max-width: 970px) {
+  .Details .most_vaccinated {
+    width: 400px;
+  }
+}
+
+@media (max-width: 840px) {
+  .Details .most_vaccinated {
+    width: 300px;
+  }
+}
+
+@media (max-width: 705px) {
+  .Details {
+    flex-direction: column;
+    justify-content: space-around;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .Details .sources_block {
+    width: 100%;
+  }
+  .Details .most_vaccinated {
+    width: 100%;
+  }
 }

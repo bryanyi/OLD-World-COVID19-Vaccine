@@ -1,3 +1,5 @@
 .LoadingComponent {
-  margin: 4rem 2rem 2rem 41rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
