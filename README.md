@@ -1,7 +1,5 @@
 # COVID-19 Vaccine Tracker
 
-## [LIVE LINK](https://world-covid-vaccinations.herokuapp.com/)
-
 ![COVID-19 Vaccine Tracker Demo](images/gif1.gif)
 _COVID-19 Vaccine Tracker Demo_
 
