@@ -1,3 +1,8 @@
+import os
+import logging
+from django.http import HttpResponse
+from django.views.generic import View
+from django.conf import settings
 from django.shortcuts import render
 from django.http import JsonResponse
 from .models import covidVaccinationData
@@ -6,6 +11,21 @@ from .models import covidVaccinationData
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .serializers import covidVaccinationDataSerializer
+
+class FrontendAppView(View):
+
+    index_file_path = os.path.join(settings.REACT_APP_DIR, 'build', 'index.html')
+
+    def get(self, request):
+        try:
+            with open(self.index_file_path) as f:
+                return HttpResponse(f.read())
+        except FileNotFoundError:
+            logging.exception('Production build of app not found')
+            return HttpResponse(
+                status=501,
+            )
+
 
 class most_vaccinated(APIView):
     def get(self, request, *args, **kwargs):
