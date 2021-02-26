@@ -2,7 +2,7 @@
   "name": "world-covid-vaccinations",
   "engines": {
     "node": "12.18.3",
-    "npm": "6.14.8"
+    "npm": "6.14.6"
   },
   "version": "1.0.0",
   "main": "index.js",
