@@ -15,7 +15,7 @@ SECRET_KEY="jj6i19-#wi7!)^l9i9els(q*7stcsdc*j*fj@mf!!%^y3@xb3k"
 DEBUG = True
 
 # ALLOWED_HOSTS = ['covid19-vaccinations.herokuapp.com','localhost']
-ALLOWED_HOSTS = ["https://covidvaccinations.herokuapp.com","covidvaccinations.herokuapp.com"]
+ALLOWED_HOSTS = ["covidvaccinations.herokuapp.com", "127.0.0.1", "0.0.0.0"]
 
 
 # Application definition
@@ -52,7 +52,7 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
-    "covidvaccinations.herokuapp.com",
+    "https://covidvaccinations.herokuapp.com",
 ]
 
 ROOT_URLCONF = 'covid_vaccine_tracker.urls'
