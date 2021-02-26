@@ -1,0 +1,15 @@
+{
+  "name": "covidvaccinations",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "",
+  "author": "BY",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "heroku-prebuild": "NODE_ENV=production npm install --prefix frontend && npm run build --prefix frontend"
+  },
+  "cacheDirectories": [
+    "frontend/node_modules"
+  ]
+}

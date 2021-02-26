@@ -1,0 +1,1 @@
+web: gunicorn covid_vaccine_tracker.wsgi
