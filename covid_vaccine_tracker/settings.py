@@ -6,7 +6,7 @@ from decouple import config
 # BASE_DIR = Path(__file__).resolve().parent.parent
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-SECRET_KEY = config('SECRET_KEY')
+# SECRET_KEY = config('SECRET_KEY')
 
 SECRET_KEY="jj6i19-#wi7!)^l9i9els(q*7stcsdc*j*fj@mf!!%^y3@xb3k"
 
