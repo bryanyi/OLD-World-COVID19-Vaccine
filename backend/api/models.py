@@ -1,6 +1,6 @@
 from django.db import models
 
-class covidVaccinationData(models.Model):
+class VaccinationData(models.Model):
     country = models.CharField(max_length=100)
     iso_code = models.CharField(max_length=100, default="N/A")
     date = models.CharField(max_length=100, default="N/A")

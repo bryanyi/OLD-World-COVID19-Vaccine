@@ -5,40 +5,27 @@ from django.views.generic import View
 from django.conf import settings
 from django.shortcuts import render
 from django.http import JsonResponse
-from .models import covidVaccinationData
+from .models import VaccinationData
 
 # third party imports
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .serializers import covidVaccinationDataSerializer
 
-class FrontendAppView(View):
-
-    index_file_path = os.path.join(settings.REACT_APP_DIR, 'build', 'index.html')
-
-    def get(self, request):
-        try:
-            with open(self.index_file_path) as f:
-                return HttpResponse(f.read())
-        except FileNotFoundError:
-            logging.exception('Production build of app not found')
-            return HttpResponse(
-                status=501,
-            )
 
 
 class most_vaccinated(APIView):
     def get(self, request, *args, **kwargs):
         mySQL="""
             SELECT *
-            FROM api_covidvaccinationdata
+            FROM api_vaccinationdata
             WHERE total_vaccinations IN (
 	        SELECT MAX(total_vaccinations)
-            FROM api_covidvaccinationdata
+            FROM api_vaccinationdata
             )
             """
         
-        querySet = covidVaccinationData.objects.raw(mySQL)
+        querySet = VaccinationData.objects.raw(mySQL)
     
         serializer = covidVaccinationDataSerializer(querySet, many=True)
         return Response(serializer.data)
@@ -49,506 +36,506 @@ class all_countries_vaccination_data(APIView):
         
         mySQL = """
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Algeria'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Algeria'
             ) && country = 'Algeria'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Andorra'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Andorra'
             ) && country = 'Andorra'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Argentina'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Argentina'
             ) && country = 'Argentina'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Austria'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Austria'
             ) && country = 'Austria'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Bahrain'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Bahrain'
             ) && country = 'Bahrain'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Argentina'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Argentina'
             ) && country = 'Argentina'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Bangladesh'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Bangladesh'
             ) && country = 'Bangladesh'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Belgium'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Belgium'
             ) && country = 'Belgium'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Bermuda'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Bermuda'
             ) && country = 'Bermuda'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Bolivia'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Bolivia'
             ) && country = 'Bolivia'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Brazil'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Brazil'
             ) && country = 'Brazil'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Bulgaria'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Bulgaria'
             ) && country = 'Bulgaria'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Canada'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Canada'
             ) && country = 'Canada'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Cayman Islands'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Cayman Islands'
             ) && country = 'Cayman Islands'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Chile'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Chile'
             ) && country = 'Chile'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'China'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'China'
             ) && country = 'China'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Costa Rica'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Costa Rica'
             ) && country = 'Costa Rica'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Croatia'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Croatia'
             ) && country = 'Croatia'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Cyprus'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Cyprus'
             ) && country = 'Cyprus'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Czechia'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Czechia'
             ) && country = 'Czechia'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Denmark'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Denmark'
             ) && country = 'Denmark'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Ecuador'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Ecuador'
             ) && country = 'Ecuador'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Egypt'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Egypt'
             ) && country = 'Egypt'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'England'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'England'
             ) && country = 'England'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Estonia'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Estonia'
             ) && country = 'Estonia'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Faeroe Islands'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Faeroe Islands'
             ) && country = 'Faeroe Islands'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Finland'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Finland'
             ) && country = 'Finland'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'France'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'France'
             ) && country = 'France'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Germany'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Germany'
             ) && country = 'Germany'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Gibraltar'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Gibraltar'
             ) && country = 'Gibraltar'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Greece'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Greece'
             ) && country = 'Greece'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Greenland'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Greenland'
             ) && country = 'Greenland'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Guernsey'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Guernsey'
             ) && country = 'Guernsey'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Hungary'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Hungary'
             ) && country = 'Hungary'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Iceland'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Iceland'
             ) && country = 'Iceland'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'India'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'India'
             ) && country = 'India'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Indonesia'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Indonesia'
             ) && country = 'Indonesia'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Ireland'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Ireland'
             ) && country = 'Ireland'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Isle of Man'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Isle of Man'
             ) && country = 'Isle of Man'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Israel'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Israel'
             ) && country = 'Israel'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Italy'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Italy'
             ) && country = 'Italy'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Jersey'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Jersey'
             ) && country = 'Jersey'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Kuwait'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Kuwait'
             ) && country = 'Kuwait'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Lativa'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Lativa'
             ) && country = 'Lativa'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Liechtenstein'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Liechtenstein'
             ) && country = 'Liechtenstein'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Lithuania'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Lithuania'
             ) && country = 'Lithuania'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Luxembourg'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Luxembourg'
             ) && country = 'Luxembourg'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Maldives'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Maldives'
             ) && country = 'Maldives'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Malta'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Malta'
             ) && country = 'Malta'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Mexico'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Mexico'
             ) && country = 'Mexico'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Monaco'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Monaco'
             ) && country = 'Monaco'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Morocco'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Morocco'
             ) && country = 'Morocco'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Myanmar'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Myanmar'
             ) && country = 'Myanmar'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Nepal'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Nepal'
             ) && country = 'Nepal'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Netherlands'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Netherlands'
             ) && country = 'Netherlands'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Northern Cyprus'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Northern Cyprus'
             ) && country = 'Northern Cyprus'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Northern Ireland'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Northern Ireland'
             ) && country = 'Northern Ireland'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Norway'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Norway'
             ) && country = 'Norway'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Oman'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Oman'
             ) && country = 'Oman'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Panama'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Panama'
             ) && country = 'Panama'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Poland'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Poland'
             ) && country = 'Poland'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Portugal'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Portugal'
             ) && country = 'Portugal'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Romania'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Romania'
             ) && country = 'Romania'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Russia'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Russia'
             ) && country = 'Russia'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Saint Helena'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Saint Helena'
             ) && country = 'Saint Helena'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Russia'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Russia'
             ) && country = 'Russia'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Saint Helena'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Saint Helena'
             ) && country = 'Saint Helena'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Saudi Arabia'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Saudi Arabia'
             ) && country = 'Saudi Arabia'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Scotland'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Scotland'
             ) && country = 'Scotland'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Serbia'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Serbia'
             ) && country = 'Serbia'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Seychelles'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Seychelles'
             ) && country = 'Seychelles'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Singapore'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Singapore'
             ) && country = 'Singapore'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Slovakia'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Slovakia'
             ) && country = 'Slovakia'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Slovenia'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Slovenia'
             ) && country = 'Slovenia'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Spain'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Spain'
             ) && country = 'Spain'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Sri Lanka'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Sri Lanka'
             ) && country = 'Sri Lanka'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Sweden'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Sweden'
             ) && country = 'Sweden'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Switzerland'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Switzerland'
             ) && country = 'Switzerland'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Turkey'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Turkey'
             ) && country = 'Turkey'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'United Arab Emirates'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'United Arab Emirates'
             ) && country = 'United Arab Emirates'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'United Kingdom'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'United Kingdom'
             ) && country = 'United Kingdom'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'United States'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'United States'
             ) && country = 'United States'
             UNION
             SELECT *
-            FROM WD_covid_vaccination_project_data_1
+            FROM api_vaccinationdata
             WHERE date = (
-                SELECT MAX(date) FROM WD_covid_vaccination_project_data_1 WHERE country = 'Wales'
+                SELECT MAX(date) FROM api_vaccinationdata WHERE country = 'Wales'
             ) && country = 'Wales'
 
             """
         
-        querySet = covidVaccinationData.objects.raw(mySQL)
+        querySet = VaccinationData.objects.raw(mySQL)
     
         serializer = covidVaccinationDataSerializer(querySet, many=True)
         return Response(serializer.data)

@@ -44,9 +44,9 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
-CORS_ORIGIN_WHITELIST = [
-    'https://localhost:3000',
-]
+# CORS_ORIGIN_WHITELIST = [
+#     'https://localhost:3000',
+# ]
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
@@ -87,8 +87,8 @@ DATABASES = {
     'default': {
         "ENGINE": 'django.db.backends.mysql',
         "NAME":'VaccinationData',
-        'USER': 'root',
-        'PASSWORD':'bryancodes',
+        'USER': 'admin',
+        'PASSWORD':'bryanWORLD-COVID-VACCINATIONS',
         'HOST':'world-covid-vaccinations.cfe1ouy4ipjp.us-east-2.rds.amazonaws.com',
         'PORT': '3306',
     }

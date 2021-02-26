@@ -4,12 +4,12 @@ import os
 path = "/Users/bryanyi/Desktop/SWE_Portfolio/COVID_Vaccine_tracker/backend"
 os.chdir(path)
 
-from api.models import covidVaccinationData
+from api.models import VaccinationData
 
 with open("vaccinations_data.csv") as csvfile:
     reader = csv.DictReader(csvfile)
     for row in reader:
-        mydata = covidVaccinationData(
+        mydata = VaccinationData(
             country=row['country'],
             iso_code=row['iso_code'],
             date=row['date'],

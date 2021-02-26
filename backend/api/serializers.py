@@ -1,9 +1,9 @@
 from rest_framework import serializers
-from .models import covidVaccinationData
+from .models import VaccinationData
 
 class covidVaccinationDataSerializer(serializers.ModelSerializer):
     class Meta:
-        model = covidVaccinationData
+        model = VaccinationData
         fields = (
             'country',
             'iso_code',

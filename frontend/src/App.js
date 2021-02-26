@@ -33,6 +33,8 @@ const App = () => {
     }
   });
 
+  console.log(filteredCountry);
+
   const handleSearch = (val) => {
     setSearchBar(val);
   };
