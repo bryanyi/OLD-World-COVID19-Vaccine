@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "proxy": "http://127.0.0.1:8000",
   "private": true,
+  "engines": {
+    "node": "12.18.3",
+    "npm": "6.14.8"
+  },
   "dependencies": {
     "@agney/react-loading": "^0.1.2",
     "@testing-library/jest-dom": "^5.11.9",
@@ -21,8 +25,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "heroku-postbuild": "npm run build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
@@ -41,9 +44,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "engines": {
-    "node": "12.18.3",
-    "npm": "6.14.8"
   }
 }
