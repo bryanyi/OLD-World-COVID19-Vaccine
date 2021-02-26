@@ -11,9 +11,6 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "heroku-postbuild": "NODE_ENV=production cd frontend && npm install && npm run build"
-  },
-  "cacheDirectories": [
-    "frontend/node_modules"
-  ]
+    "heroku-postbuild": "cd frontend && npm install && npm run build"
+  }
 }
