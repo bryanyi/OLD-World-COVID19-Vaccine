@@ -53,6 +53,7 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "https://covidvaccinations.herokuapp.com",
+    "https://hopeful-babbage-4148a7.netlify.app/"
 ]
 
 ROOT_URLCONF = 'covid_vaccine_tracker.urls'
