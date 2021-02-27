@@ -47,11 +47,6 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
 
-CORS_ORIGIN_WHITELIST = [
-    'https://localhost:3000',
-    'https://hopeful-babbage-4148a7.netlify.app/'
-]
-
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "https://covidvaccinations.herokuapp.com",
