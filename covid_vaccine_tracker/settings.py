@@ -15,7 +15,7 @@ SECRET_KEY="jj6i19-#wi7!)^l9i9els(q*7stcsdc*j*fj@mf!!%^y3@xb3k"
 DEBUG = True
 
 # ALLOWED_HOSTS = ['covid19-vaccinations.herokuapp.com','localhost']
-ALLOWED_HOSTS = ["covidvaccinations.herokuapp.com", "127.0.0.1", "0.0.0.0"]
+ALLOWED_HOSTS = ["covidvaccinations.herokuapp.com", "127.0.0.1", "0.0.0.0","https://hopeful-babbage-4148a7.netlify.app/"]
 
 
 # Application definition
@@ -46,9 +46,11 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
-# CORS_ORIGIN_WHITELIST = [
-#     'https://localhost:3000',
-# ]
+
+CORS_ORIGIN_WHITELIST = [
+    'https://localhost:3000',
+    'https://hopeful-babbage-4148a7.netlify.app/'
+]
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
