@@ -1,14 +1,12 @@
 import os
 from pathlib import Path
-# from decouple import config
+from decouple import config
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-# BASE_DIR = Path(__file__).resolve().parent.parent
+
+
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-# SECRET_KEY = config('SECRET_KEY')
-
-SECRET_KEY="jj6i19-#wi7!)^l9i9els(q*7stcsdc*j*fj@mf!!%^y3@xb3k"
+SECRET_KEY = config('SECRET_KEY')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -52,7 +50,6 @@ CORS_ALLOWED_ORIGINS = [
     "https://world-covid-vaccinations.netlify.app/"
 ]
 
-# CORS_ALLOW_ALL_ORIGINS = True
 
 ROOT_URLCONF = 'covid_vaccine_tracker.urls'
 
@@ -81,10 +78,10 @@ DATABASES = {
     'default': {
         "ENGINE": 'django.db.backends.mysql',
         "NAME":'VaccinationData',
-        'USER': 'admin',
-        'PASSWORD':'bryanWORLD-COVID-VACCINATIONS',
-        'HOST':'world-covid-vaccinations.cfe1ouy4ipjp.us-east-2.rds.amazonaws.com',
-        'PORT': '3306',
+        'USER': config('SQL_USER'),
+        'PASSWORD':config('SQL_PW'),
+        'HOST':config('SQL_HOST')
+        'PORT': config('SQL_PORT'),
         'OPTIONS': {
             'init_command': 'SET innodb_strict_mode=1',
         },
