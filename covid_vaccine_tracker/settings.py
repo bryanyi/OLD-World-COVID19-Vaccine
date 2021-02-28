@@ -14,8 +14,8 @@ SECRET_KEY="jj6i19-#wi7!)^l9i9els(q*7stcsdc*j*fj@mf!!%^y3@xb3k"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# ALLOWED_HOSTS = ['covid19-vaccinations.herokuapp.com','localhost']
-ALLOWED_HOSTS = ["covidvaccinations.herokuapp.com", "127.0.0.1", "0.0.0.0","https://hopeful-babbage-4148a7.netlify.app/"]
+
+ALLOWED_HOSTS = ["covidvaccinations.herokuapp.com", "127.0.0.1", "0.0.0.0"]
 
 
 # Application definition
@@ -50,7 +50,7 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "https://covidvaccinations.herokuapp.com",
-    "https://hopeful-babbage-4148a7.netlify.app/"
+    "https://hopeful-babbage-4148a7.netlify.app/",
 ]
 
 ROOT_URLCONF = 'covid_vaccine_tracker.urls'
