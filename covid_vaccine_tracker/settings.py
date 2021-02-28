@@ -47,13 +47,12 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
 
-# CORS_ALLOWED_ORIGINS = [
-#     "http://localhost:3000",
-#     "https://covidvaccinations.herokuapp.com",
-#     "https://hopeful-babbage-4148a7.netlify.app/",
-# ]
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "https://hopeful-babbage-4148a7.netlify.app/",
+]
 
-CORS_ALLOW_ALL_ORIGINS = True
+# CORS_ALLOW_ALL_ORIGINS = True
 
 ROOT_URLCONF = 'covid_vaccine_tracker.urls'
 
@@ -86,6 +85,9 @@ DATABASES = {
         'PASSWORD':'bryanWORLD-COVID-VACCINATIONS',
         'HOST':'world-covid-vaccinations.cfe1ouy4ipjp.us-east-2.rds.amazonaws.com',
         'PORT': '3306',
+        'OPTIONS': {
+            'init_command': 'SET innodb_strict_mode=1',
+        },
     }
 }
 
