@@ -49,7 +49,7 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
-    "https://hopeful-babbage-4148a7.netlify.app/",
+    "https://world-covid-vaccinations.netlify.app/"
 ]
 
 # CORS_ALLOW_ALL_ORIGINS = True
