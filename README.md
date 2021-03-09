@@ -10,4 +10,4 @@ _Responsiveness Demo_
 
 ## Technologies Used
 
-Python/Django, React.js, SQL, Chart.js, Axios
+Python/Django, React.js, SQL, Chart.js, Axios, Heroku (backend), Netlify (frontend)
