@@ -80,11 +80,11 @@ DATABASES = {
         "NAME":'VaccinationData',
         'USER': config('SQL_USER'),
         'PASSWORD':config('SQL_PW'),
-        'HOST':config('SQL_HOST')
+        'HOST':config('SQL_HOST'),
         'PORT': config('SQL_PORT'),
         'OPTIONS': {
-            'init_command': 'SET innodb_strict_mode=1',
-        },
+            'init_command': 'SET innodb_strict_mode=1'
+        }
     }
 }
 

@@ -1,4 +1,6 @@
-# COVID-19 Vaccine Tracker
+# COVID-19 Vaccine Tracker (OLD)
+
+## Link to updated project here: https://github.com/bryanyi/COVID-Vaccination-Tracker
 
 ## [LIVE LINK](https://world-covid-vaccinations.netlify.app/)
 
